@@ -31,6 +31,7 @@ binarysensor = BinarySensor(xknx, 'TestInput', group_address_state='1/2/3', devi
 - `reset_after` may be used to reset the internal state to `OFF` again after given time in sec. Defaults to `None`
 - `device_class` may be used to store the type of sensor, e.g. "motion" for motion detectors for Home-Assistant.
 - `device_updated_cb` awaitable callback for each update.
+- `value_template` may be used to modify the state of the binary sensor in Home-Assistant (e.g. binary arithmetic with states from other entities; see [template documentation](https://www.home-assistant.io/docs/configuration/templating) for details).
 
 ## [](#header-2)Example
 

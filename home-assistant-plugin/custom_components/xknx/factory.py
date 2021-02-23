@@ -319,6 +319,7 @@ def _create_binary_sensor(knx_module: XKNX, config: ConfigType) -> XknxBinarySen
         ignore_internal_state=config[BinarySensorSchema.CONF_IGNORE_INTERNAL_STATE],
         context_timeout=config.get(BinarySensorSchema.CONF_CONTEXT_TIMEOUT),
         reset_after=config.get(BinarySensorSchema.CONF_RESET_AFTER),
+        value_template=config.get(BinarySensorSchema.CONF_VALUE_TEMPLATE),
     )
 
 

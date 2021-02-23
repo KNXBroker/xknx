@@ -40,6 +40,7 @@ class BinarySensor(Device):
         actions: Optional[List[Action]] = None,
         context_timeout: Optional[float] = None,
         device_updated_cb: Optional[DeviceCallbackType] = None,
+        value_template: Optional[str] = None,
     ):
         """Initialize BinarySensor class."""
         # pylint: disable=too-many-arguments
@@ -69,6 +70,7 @@ class BinarySensor(Device):
             # after_update called internally
             after_update_cb=self._state_from_remote_value,
         )
+        self.value_template = value_template
 
     def _iter_remote_values(self) -> Iterator[RemoteValueSwitch]:
         """Iterate the devices RemoteValue classes."""
@@ -95,6 +97,7 @@ class BinarySensor(Device):
         sync_state = config.get("sync_state", True)
         device_class = config.get("device_class")
         ignore_internal_state = config.get("ignore_internal_state", False)
+        value_template = config.get("value_template")
         actions = []
         if "actions" in config:
             for action in config["actions"]:
@@ -112,6 +115,7 @@ class BinarySensor(Device):
             reset_after=reset_after,
             device_class=device_class,
             actions=actions,
+            value_template=value_template,
         )
 
     async def _state_from_remote_value(self) -> None:
